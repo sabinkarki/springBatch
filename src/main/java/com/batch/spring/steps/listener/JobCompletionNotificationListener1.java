@@ -35,6 +35,9 @@ public class JobCompletionNotificationListener1 extends JobExecutionListenerSupp
 						rs.getString(4))
 			).forEach(person -> log.info("Found <" + person + "> in the database."));
 		}
+		if(jobExecution.getStatus() == BatchStatus.FAILED){
+			log.error("Job failed");
+		}
 	}
 	
 

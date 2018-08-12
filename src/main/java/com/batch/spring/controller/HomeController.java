@@ -8,8 +8,13 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.batch.spring.service.VehileService;
 
 @RestController
 public class HomeController {
@@ -26,6 +31,9 @@ public class HomeController {
 	@Qualifier("job2")
 	@Autowired
 	private Job job2;
+	
+	@Autowired
+	private VehileService vechileService;
 	
 
 	@GetMapping("/launchJob1")
@@ -66,5 +74,14 @@ public class HomeController {
 	public String home(){
 		log.info("HomeController");
 		return "Home";
+	}
+	
+	@DeleteMapping("/")
+	public ResponseEntity<?> deleteAll(){
+		boolean deleted = this.vechileService.deleteAll();
+		if(deleted){
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

@@ -80,7 +80,7 @@ public class BatchConfig {
 	@Bean
 	public Step step2(){
 		return stepBuilderFactory.get("step2")
-				.<String, String> chunk(1)
+				.<String, String> chunk(3)
 				.reader(wordReader)
 				.processor(wordProcessor)
 				.writer(wordWriter)

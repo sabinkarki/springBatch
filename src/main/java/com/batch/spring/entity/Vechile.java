@@ -13,7 +13,7 @@ public class Vechile {
 	@Id
 	@GeneratedValue
 	@Column(name = "Id", nullable = false)
-	private long id;
+	private Long id;
 	private String type;
 	private String model;
 	private String built;
@@ -29,11 +29,11 @@ public class Vechile {
 		this.id = id;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

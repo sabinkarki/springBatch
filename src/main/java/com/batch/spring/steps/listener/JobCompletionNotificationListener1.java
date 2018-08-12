@@ -20,10 +20,11 @@ public class JobCompletionNotificationListener1 extends JobExecutionListenerSupp
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	
 	@Override
 	public void afterJob(JobExecution jobExecution) {
-		
 		if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
+			
 			log.info("!!! Job Done");
 			final String queryStr = "Select * from Vechile";
 			jdbcTemplate.query(queryStr,

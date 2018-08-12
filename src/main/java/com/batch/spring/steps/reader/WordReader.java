@@ -4,7 +4,9 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WordReader implements ItemReader<String> {
 	
 	String [] words ={"Laptop","Pamtop","Watch"};
